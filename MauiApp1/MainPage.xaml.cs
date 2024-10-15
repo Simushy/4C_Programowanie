@@ -4,8 +4,8 @@ namespace MauiApp1
 {
     public class Unit
     {
-        public string name { get; set; }
-        public int value { get; set; }
+        public string Name { get; set; }
+        public int Value { get; set; }
     }
     public partial class MainPage : ContentPage
     {
@@ -23,20 +23,20 @@ namespace MauiApp1
         public MainPage()
         {
             Units = new List<Unit>();
-            Units.Add(new Unit { name = "mm", value = 1 });
-            Units.Add(new Unit { name = "cm", value = 10 });
-            Units.Add(new Unit { name = "dm", value = 100});
-            Units.Add(new Unit { name = "m", value = 1000});
-            Units.Add(new Unit { name = "km", value = 1000000 });
+            Units.Add(new Unit { Name = "mm", Value = 1 });
+            Units.Add(new Unit { Name = "cm", Value = 10 });
+            Units.Add(new Unit { Name = "dm", Value = 100});
+            Units.Add(new Unit { Name = "m", Value = 1000});
+            Units.Add(new Unit { Name = "km", Value = 1000000 });
             InitializeComponent();
         }
         private void OnClick(object sender, EventArgs e)
         {
             double ResultValue = double.Parse(Value);
-            ResultValue = ResultValue * ConvertUnitFrom.value;
-            ResultValue = ResultValue / ConvertUnitTo.value;
-            int Accuracy = (ConvertUnitTo.value / ConvertUnitFrom.value).ToString().Length-1;
-            ResultValueText = $"{Value} {ConvertUnitFrom.name} is {ResultValue.ToString($"F{Accuracy}")} {ConvertUnitTo.name}";
+            ResultValue = ResultValue * ConvertUnitFrom.Value;
+            ResultValue = ResultValue / ConvertUnitTo.Value;
+            int Accuracy = (ConvertUnitTo.Value / ConvertUnitFrom.Value).ToString().Length-1;
+            ResultValueText = $"{Value} {ConvertUnitFrom.Name} is {ResultValue.ToString($"F{Accuracy}")} {ConvertUnitTo.Name}";
 
         }
     }

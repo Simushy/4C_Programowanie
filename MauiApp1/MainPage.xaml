@@ -9,21 +9,21 @@
 
     <StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center"
-                     Spacing="40">
+                     Spacing="40" Margin="0, 10, 0, 0">
             <StackLayout Orientation="Vertical" VerticalOptions="Center">
                 <Label Text="   From:"/>
                 <Picker ItemsSource="{Binding Units}"
-                    ItemDisplayBinding="{Binding name}"
+                        ItemDisplayBinding="{Binding name}"
                         SelectedItem="{Binding ConvertUnitFrom}"
-                    />
+                />
             </StackLayout>
 
             <StackLayout Orientation="Vertical" VerticalOptions="Center">
                 <Label Text="      To:"/>
                 <Picker ItemsSource="{Binding Units}"
-                ItemDisplayBinding="{Binding name}"
+                        ItemDisplayBinding="{Binding name}"
                         SelectedItem="{Binding ConvertUnitTo}"
-        />
+                />
             </StackLayout>
 
         </StackLayout>
@@ -36,7 +36,7 @@
                Text="{Binding Value}"/>
         </StackLayout>
         <Button Text="Calculate" MaximumWidthRequest="100" Margin="0, 10, 0, 0" Clicked="OnClick"/>
-        <Label Margin="0, 10, 0, 0" Text="{Binding ResultValueText}"/>
+        <Label Margin="0, 10, 0, 0" Text="{Binding ResultValueText}" HorizontalOptions="Center"/>
     </StackLayout>
 
 </ContentPage>

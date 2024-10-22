@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiApp1", "MauiApp1\MauiApp1.csproj", "{0EA63CA7-8614-47A6-964B-CB7C1B773EAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempConverter", "TempConverter\TempConverter.csproj", "{857735B2-98C0-4F7A-B9B3-453F135CB263}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempConverter", "TempConverter\TempConverter.csproj", "{857735B2-98C0-4F7A-B9B3-453F135CB263}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorMauiApp", "CalculatorMauiApp\CalculatorMauiApp.csproj", "{965E3FA0-1B40-47E3-A447-B6C9E95D4305}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,12 @@ Global
 		{857735B2-98C0-4F7A-B9B3-453F135CB263}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{857735B2-98C0-4F7A-B9B3-453F135CB263}.Release|Any CPU.Build.0 = Release|Any CPU
 		{857735B2-98C0-4F7A-B9B3-453F135CB263}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{965E3FA0-1B40-47E3-A447-B6C9E95D4305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{965E3FA0-1B40-47E3-A447-B6C9E95D4305}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{965E3FA0-1B40-47E3-A447-B6C9E95D4305}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{965E3FA0-1B40-47E3-A447-B6C9E95D4305}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{965E3FA0-1B40-47E3-A447-B6C9E95D4305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{965E3FA0-1B40-47E3-A447-B6C9E95D4305}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

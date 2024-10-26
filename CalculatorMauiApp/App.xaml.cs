@@ -16,10 +16,10 @@
             {
                 if (mainPage.Window != null)
                 {
-                    mainPage.Window.MaximumWidth = 700;
-                    mainPage.Window.MaximumHeight = 800;
-                    mainPage.Window.MinimumWidth = 700;
-                    mainPage.Window.MinimumHeight = 800;
+                    mainPage.Window.MaximumWidth = 400;
+                    mainPage.Window.MaximumHeight = 500;
+                    mainPage.Window.MinimumWidth = 400;
+                    mainPage.Window.MinimumHeight = 500;
                 }
             });
 

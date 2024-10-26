@@ -10,6 +10,8 @@ namespace CalculatorMauiApp
     {
         private string calculatingResult = "";
         private Command numberCommand;
+        private Command backspaceCommand;
+        private Command operationCommand;
         public Command NumberCommand
         {
             get
@@ -18,13 +20,77 @@ namespace CalculatorMauiApp
                 {
                     numberCommand = new Command<string>((string number) =>
                     {
-                        CalculatingResult = CalculatingResult + number;
+                        if (ifOperationExecute == false) {
+                            CalculatingResult = CalculatingResult + number; }
+                        else
+                        {
+                            CalculatingResult = number;
+                            ifOperationExecute = false;
+                        }
                     });
                 }
                 return numberCommand;
 
             }
             set { numberCommand = value; }
+        }
+        public Command OperationCommand
+        {
+            get
+            {
+                if (operationCommand == null)
+                {
+                    operationCommand = new Command<string>((string operatorSign) =>
+                    {
+                        if (ifOperationExecute)
+                            return;
+                        int firstNumber = prevNumber;
+                        int secondNumber = int.Parse(calculatingResult);
+                        CalculatingResult = GetOperatorResult(prevOperatorSign, firstNumber, secondNumber).ToString();
+                        prevOperatorSign = operatorSign;
+                        prevNumber = int.Parse(calculatingResult);
+                        ifOperationExecute = true;
+                        DisplayPreviousCalculation = $"{prevNumber} {prevOperatorSign}";
+                    });
+                }
+                return operationCommand;
+
+            }
+            set { operationCommand = value; }
+        }
+        private string prevOperatorSign = "+";
+        private int prevNumber = 0;
+        private bool ifOperationExecute = false;
+        private string displayPreviousCalculation;
+        public string DisplayPreviousCalculation { get { return displayPreviousCalculation; } set { displayPreviousCalculation = value; OnPropertyChanged(); } }
+        int GetOperatorResult(string operatorSign, int firstNumber, int secondNumber)
+        {
+            int result =  operatorSign switch
+            {
+                "+" => firstNumber + secondNumber,
+                "-" => firstNumber - secondNumber,
+                "*" => firstNumber * secondNumber,
+                "/" => firstNumber / secondNumber,
+                _ => 0,
+            };
+            return result;
+        }
+        public Command BackspaceCommand
+        {
+            get
+            {
+                if (backspaceCommand == null)
+                {
+                    backspaceCommand = new Command(() =>
+                    {
+                        if (calculatingResult.Length > 0)
+                            CalculatingResult = calculatingResult.Remove(calculatingResult.Length - 1);
+                    });
+                }
+                return backspaceCommand;
+
+            }
+            set { backspaceCommand = value; }
         }
         public string CalculatingResult
         {

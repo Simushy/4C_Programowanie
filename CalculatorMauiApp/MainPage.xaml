@@ -6,24 +6,25 @@
     <ContentPage.BindingContext>
         <ViewModel:CalculatorViewModel/>
     </ContentPage.BindingContext>
-    <Grid RowDefinitions=" *, *,*,*,*" ColumnDefinitions="*,*,*,*,*" RowSpacing="10" ColumnSpacing="10" Padding="10, 10, 10, 10">
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" FontSize="60" VerticalTextAlignment="Center" HorizontalTextAlignment="End"  Text="{Binding CalculatingResult}"></Label>
-        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="0" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="3" Grid.Column="0" Text="1" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="3" Grid.Column="1" Text="2" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="3" Grid.Column="2" Text="3" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="2" Grid.Column="0" Text="4" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Text="5" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="2" Grid.Column="2" Text="6" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="1" Grid.Column="0" Text="7" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="1" Grid.Column="1" Text="8" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="1" Grid.Column="2" Text="9" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
-        <Button Grid.Row="1" Grid.Column="3" Text="×" FontSize="40" Command="{Binding OperationCommand}" CommandParameter="*"></Button>
-        <Button Grid.Row="2" Grid.Column="3" Text="÷" FontSize="40" Command="{Binding OperationCommand}" CommandParameter="/"></Button>
-        <Button Grid.Row="3" Grid.Column="3" Text="+" FontSize="40" Command="{Binding OperationCommand}" CommandParameter="+"></Button>
-        <Button Grid.Row="4" Grid.Column="3" Text="-" FontSize="40" Command="{Binding OperationCommand}" CommandParameter="-"></Button>
-        <Button Grid.Row="1" Grid.Column="4" Text="⭠" FontSize="40" Command="{Binding BackspaceCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="4" Grid.RowSpan="3" Text="=" FontSize="40"></Button>
+    <Grid RowDefinitions="0.5*, *, *,*,*,*" ColumnDefinitions="*,*,*,*,*" RowSpacing="10" ColumnSpacing="10" Padding="10, 10, 10, 10">
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" FontSize="30" VerticalTextAlignment="Center" HorizontalTextAlignment="End"  Text="{Binding DisplayPreviousCalculation}" TextColor="Gray"></Label>
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" FontSize="60" VerticalTextAlignment="Center" HorizontalTextAlignment="End"  Text="{Binding CalculatingResult}"></Label>
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Text="0" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
+        <Button Grid.Row="4" Grid.Column="0" Text="1" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}" ></Button>
+        <Button Grid.Row="4" Grid.Column="1" Text="2" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
+        <Button Grid.Row="4" Grid.Column="2" Text="3" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
+        <Button Grid.Row="3" Grid.Column="0" Text="4" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Text="5" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
+        <Button Grid.Row="3" Grid.Column="2" Text="6" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
+        <Button Grid.Row="2" Grid.Column="0" Text="7" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Text="8" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
+        <Button Grid.Row="2" Grid.Column="2" Text="9" FontSize="40" Command="{Binding NumberCommand}" CommandParameter="{Binding Text, Source={x:RelativeSource Self}}"></Button>
+        <Button Grid.Row="2" Grid.Column="3" Text="×" FontSize="40" Command="{Binding OperationCommand}" CommandParameter="*"></Button>
+        <Button Grid.Row="3" Grid.Column="3" Text="÷" FontSize="40" Command="{Binding OperationCommand}" CommandParameter="/"></Button>
+        <Button Grid.Row="4" Grid.Column="3" Text="+" FontSize="40" Command="{Binding OperationCommand}" CommandParameter="+"></Button>
+        <Button Grid.Row="5" Grid.Column="3" Text="-" FontSize="40" Command="{Binding OperationCommand}" CommandParameter="-"></Button>
+        <Button Grid.Row="2" Grid.Column="4" Text="⭠" FontSize="40" Command="{Binding BackspaceCommand}"></Button>
+        <Button Grid.Row="3" Grid.Column="4" Grid.RowSpan="3" Text="=" FontSize="40" Command="{Binding EqualsCommand}" CommandParameter="="></Button>
     </Grid>
     
 

@@ -8,10 +8,11 @@ namespace CalculatorMauiApp
 {
     public class CalculatorViewModel : BindableObject
     {
-        private string calculatingResult = "";
+        private string calculatingResult = "0";
         private Command numberCommand;
         private Command backspaceCommand;
         private Command operationCommand;
+        private Command equalsCommand;
         public Command NumberCommand
         {
             get
@@ -20,13 +21,21 @@ namespace CalculatorMauiApp
                 {
                     numberCommand = new Command<string>((string number) =>
                     {
-                        if (ifOperationExecute == false) {
-                            CalculatingResult = CalculatingResult + number; }
-                        else
+                        if (prevEquals == true)
                         {
-                            CalculatingResult = number;
-                            ifOperationExecute = false;
+                            CalculatingResult = "0";
+                            DisplayPreviousCalculation = null;
+                            prevEquals = false;
                         }
+                            if (ifOperationExecute == false)
+                            {
+                                CalculatingResult = CalculatingResult + number;
+                            }
+                            else
+                            {
+                                CalculatingResult = number;
+                                ifOperationExecute = false;
+                            }
                     });
                 }
                 return numberCommand;
@@ -42,6 +51,7 @@ namespace CalculatorMauiApp
                 {
                     operationCommand = new Command<string>((string operatorSign) =>
                     {
+
                         if (ifOperationExecute)
                             return;
                         int firstNumber = prevNumber;
@@ -50,6 +60,7 @@ namespace CalculatorMauiApp
                         prevOperatorSign = operatorSign;
                         prevNumber = int.Parse(calculatingResult);
                         ifOperationExecute = true;
+                        CalculatingResult = "0";
                         DisplayPreviousCalculation = $"{prevNumber} {prevOperatorSign}";
                     });
                 }
@@ -60,7 +71,7 @@ namespace CalculatorMauiApp
         }
         private string prevOperatorSign = "+";
         private int prevNumber = 0;
-        private bool ifOperationExecute = false;
+        private bool ifOperationExecute = true;
         private string displayPreviousCalculation;
         public string DisplayPreviousCalculation { get { return displayPreviousCalculation; } set { displayPreviousCalculation = value; OnPropertyChanged(); } }
         int GetOperatorResult(string operatorSign, int firstNumber, int secondNumber)
@@ -71,6 +82,7 @@ namespace CalculatorMauiApp
                 "-" => firstNumber - secondNumber,
                 "*" => firstNumber * secondNumber,
                 "/" => firstNumber / secondNumber,
+                "=" => GetOperatorResult(prevOperatorSign, firstNumber, secondNumber),
                 _ => 0,
             };
             return result;
@@ -83,8 +95,21 @@ namespace CalculatorMauiApp
                 {
                     backspaceCommand = new Command(() =>
                     {
-                        if (calculatingResult.Length > 0)
-                            CalculatingResult = calculatingResult.Remove(calculatingResult.Length - 1);
+                        if (prevEquals == true)
+                        {
+                            CalculatingResult = "0";
+                            DisplayPreviousCalculation = null;
+                            prevEquals = false;
+                        }
+                        else
+                        {
+                            if (calculatingResult.Length - 1 > 0)
+                            {
+                                if (calculatingResult.Length - 1 == 0)
+                                    CalculatingResult = "0";
+                                CalculatingResult = calculatingResult.Remove(calculatingResult.Length - 1);
+                            }
+                        }
                     });
                 }
                 return backspaceCommand;
@@ -92,6 +117,34 @@ namespace CalculatorMauiApp
             }
             set { backspaceCommand = value; }
         }
+        public Command EqualsCommand
+        {
+            get
+            {
+                if (equalsCommand == null)
+                {
+                    equalsCommand = new Command<string>((string operatorSign) =>
+                    {
+                        if (ifOperationExecute)
+                            return;
+                        int firstNumber = prevNumber;
+                        int secondNumber = int.Parse(calculatingResult);
+                        CalculatingResult = GetOperatorResult(operatorSign, firstNumber, secondNumber).ToString();
+                        
+                        
+                        ifOperationExecute = true;
+                        DisplayPreviousCalculation = $"{firstNumber} {prevOperatorSign} {secondNumber} {operatorSign}";
+                        prevNumber = 0;
+                        prevOperatorSign = "+";
+                        prevEquals = true;
+                    });
+                }
+                return equalsCommand;
+
+            }
+            set { equalsCommand = value; }
+        }
+        private bool prevEquals = false;
         public string CalculatingResult
         {
             get { return calculatingResult; }

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:QuizMauiApp"
+             x:Class="QuizMauiApp.MainPage"
+             Title="QuizMauiApp">
+    <ContentPage.BindingContext>
+        <viewModel:ViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+
+        <Border WidthRequest="500" HeightRequest="400" Padding="20 0 20 0" Stroke="Aqua" Background="#1F1F1F">
+            <Border.Shadow>
+                <Shadow Brush="SkyBlue"
+                    Offset="0,0"
+                    Radius="40"
+                    Opacity="0.3"/>
+            </Border.Shadow>
+            <StackLayout>
+                <StackLayout Orientation="Vertical" Padding="20 0 40 40">
+
+                    <Label Text="{Binding CurrentQuestion.QuestionText}" FontSize="40"></Label>
+                    <RadioButton GroupName="Answers" Content="{Binding CurrentQuestion.Answers[0]}" IsChecked="{Binding Checked0}"/>
+                    <RadioButton GroupName="Answers" Content="{Binding CurrentQuestion.Answers[1]}" IsChecked="{Binding Checked1}"/>
+                    <RadioButton GroupName="Answers" Content="{Binding CurrentQuestion.Answers[2]}" IsChecked="{Binding Checked2}"/>
+                    <RadioButton GroupName="Answers" Content="{Binding CurrentQuestion.Answers[3]}" IsChecked="{Binding Checked3}"/>
+                    <StackLayout Orientation="Horizontal" Spacing="20" Margin="30 0 0 0" >
+                        <Button Text="Poprzednie" Command="{Binding PreviousQuestionCommand}" WidthRequest="110">
+                            <Button.Shadow>
+                                <Shadow Brush="HotPink" Opacity="0.5" Radius="15" Offset="0,0"/>
+                            </Button.Shadow>
+                        </Button>
+                        <Button Text="Następne" Command="{Binding NextQuestionCommand}" WidthRequest="100">
+                            <Button.Shadow>
+                                <Shadow Brush="HotPink" Opacity="0.5" Radius="15" Offset="0,0"/>
+                            </Button.Shadow>
+                        </Button>
+                        <Button Text="Sprawdź" Command="{Binding CheckAnswersCommand}" WidthRequest="90" BackgroundColor="Lime">
+                            <Button.Shadow>
+                                <Shadow Brush="LightSeaGreen" Opacity="0.5" Radius="15" Offset="0,0"/>
+                            </Button.Shadow>
+                        </Button>
+                        <Button Text="Reset" Command="{Binding ResetCommand}" WidthRequest="70" BackgroundColor="Red" TextColor="LightGray">
+                            <Button.Shadow>
+                                <Shadow Brush="PaleVioletRed" Opacity="0.5" Radius="15" Offset="0,0"/>
+                            </Button.Shadow>
+                        </Button>
+                    </StackLayout>
+
+
+                </StackLayout>
+            </StackLayout>
+
+        </Border>
+        <Label Text="{Binding ResultLabelText}" HorizontalTextAlignment="Center" Margin="100 0 0 0" FontSize="40">
+            <Label.Shadow>
+                <Shadow Brush="SkyBlue" Opacity="1" Radius="40" Offset="0,0"/>
+            </Label.Shadow>
+        </Label>
+    </StackLayout>
+</ContentPage>
